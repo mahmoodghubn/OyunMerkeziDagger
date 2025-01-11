@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    /*change from android:Theme.Material.Light.NoActionBar after extending daggerAppCompatActivity*/
+    <style name="Theme.OyunMerkezi" parent="Theme.AppCompat.Light.DarkActionBar" />
+</resources>
