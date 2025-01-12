@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModelProviders
 import com.example.oyunmerkezi.ui.auth.AuthViewModel
 import com.example.oyunmerkezi.ui.theme.OyunMerkeziTheme
 import com.example.oyunmerkezi.viewmodels.ViewModelProviderFactory
@@ -18,10 +19,10 @@ import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
 class AuthActivity : DaggerAppCompatActivity() {
-//    @Inject
-//    lateinit var providerFactory: ViewModelProviderFactory
+    @Inject
+    lateinit var providerFactory: ViewModelProviderFactory
 
-    lateinit var viewModel:AuthViewModel;
+    lateinit var viewModel:AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,7 @@ class AuthActivity : DaggerAppCompatActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    viewModel = ViewModelProviders.of(this,providerFactory)[AuthViewModel::class.java]
                 }
             }
         }

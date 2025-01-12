@@ -6,8 +6,9 @@ import javax.inject.Inject
 
 
 class AuthViewModel : ViewModel {
+    private val TAG = "AuthViewModel"
     @Inject
     constructor() {
-        Log.d("TAG", "AuthViewModel: viewmodel is working...")
+        Log.d(TAG, "AuthViewModel: viewmodel is working...")
     }
 }
