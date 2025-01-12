@@ -1,7 +1,8 @@
-package com.example.oyunmerkezilast.di
+package com.example.oyunmerkezi.di
 
 import android.app.Application
 import com.example.oyunmerkezi.BaseApplication
+import com.example.oyunmerkezi.di.ActivityBuilderModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

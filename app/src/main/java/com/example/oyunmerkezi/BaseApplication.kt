@@ -1,6 +1,6 @@
 package com.example.oyunmerkezi
 
-import com.example.oyunmerkezilast.di.DaggerAppComponent
+import com.example.oyunmerkezi.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 

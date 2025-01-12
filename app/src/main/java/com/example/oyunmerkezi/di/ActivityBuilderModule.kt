@@ -1,4 +1,4 @@
-package com.example.oyunmerkezilast.di
+package com.example.oyunmerkezi.di
 
 import com.example.oyunmerkezi.AuthActivity
 import dagger.Module

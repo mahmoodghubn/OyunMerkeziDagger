@@ -1,4 +1,4 @@
-package com.example.oyunmerkezilast.di
+package com.example.oyunmerkezi.di
 
 import dagger.Module
 import dagger.Provides
@@ -7,9 +7,5 @@ import dagger.Provides
 class AppModule {
 //where to put application level dependencies
 
-    @Provides
-     fun getString():String{
-         return "hi there"
-     }
 
 }

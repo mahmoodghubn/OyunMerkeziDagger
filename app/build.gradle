@@ -73,4 +73,9 @@ dependencies {
     implementation 'com.google.dagger:dagger-android:2.52'
     implementation 'com.google.dagger:dagger-android-support:2.52' // if you use the support libraries
     kapt 'com.google.dagger:dagger-android-processor:2.52'//kapt was annotationProcessor
+
+    // ViewModel and LiveData
+    def lifecycle_version = '2.1.0-alpha03'
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 }
