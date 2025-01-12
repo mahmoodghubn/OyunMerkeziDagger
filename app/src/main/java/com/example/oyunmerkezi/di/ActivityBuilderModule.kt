@@ -8,6 +8,7 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class ActivityBuilderModule {
-    @ContributesAndroidInjector(modules =[ AuthViewModelsModule::class])
+    @ContributesAndroidInjector(modules =[ AuthViewModelsModule::class])//this will create sub component behind the scene
+    // sub component for organization and scooping
     abstract fun contributeAuthActivity(): AuthActivity
 }
