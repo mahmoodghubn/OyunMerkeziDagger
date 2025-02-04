@@ -1,5 +1,6 @@
 package com.example.oyunmerkezi.di
 
+import com.example.oyunmerkezi.database.GameDatabase
 import com.example.oyunmerkezi.ui.auth.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -21,5 +22,7 @@ class AppModule {
 
 
     @Provides
+    @Singleton
     fun provideUserRepository(firebaseAuth: FirebaseAuth): UserRepository = UserRepository(firebaseAuth)
+
 }

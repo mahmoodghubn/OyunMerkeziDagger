@@ -1,11 +1,14 @@
 package com.example.oyunmerkezi
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.oyunmerkezi.ui.auth.AuthViewModel
 import com.example.oyunmerkezi.ui.auth.UserRepository
+import com.example.oyunmerkezi.ui.main.GameViewModel
 import com.example.oyunmerkezi.viewmodels.ViewModelProviderFactory
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
@@ -16,6 +19,9 @@ class AuthActivity : DaggerAppCompatActivity() {
 
     lateinit var authViewModel:AuthViewModel
     @Inject lateinit var userRepository: UserRepository
+
+    private lateinit var gameViewModel: GameViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
@@ -40,6 +46,19 @@ class AuthActivity : DaggerAppCompatActivity() {
         } else {
             println("No user is logged in.")
         }
+
+        gameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+
+        gameViewModel.game.observe(this) { game ->
+            if (game != null) {
+                Log.d("Firebase", "User Namee: ${game.gameName}, Age: ${game.gameId}")
+            } else {
+                Log.e("Firebase", "User nameee not found")
+            }
+        }
+
+        // Fetch user data
+        gameViewModel.fetchGame("1")
 
     }
 
