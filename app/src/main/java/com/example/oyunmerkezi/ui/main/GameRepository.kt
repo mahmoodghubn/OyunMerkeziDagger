@@ -1,56 +1,37 @@
 package com.example.oyunmerkezi.ui.main
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.oyunmerkezi.util.FirebaseGame
-import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class GameRepository() {//(private val database: GameDao,private val context: Context) {
 
-    private val firebaseDatabase = FirebaseDatabase.getInstance()
-    private val myRef = firebaseDatabase.getReference("platforms/PS3")
+    private val database =
+        FirebaseDatabase.getInstance().getReference("platforms/PS3") // Correct path
 
-    fun getGame(gameId: String, onResult: (FirebaseGame?) -> Unit) {
-        myRef.child(gameId).get().addOnSuccessListener { snapshot ->
-            val game = snapshot.getValue(FirebaseGame::class.java)
-            onResult(game) // Return data to ViewModel
-        }.addOnFailureListener {
-            Log.e("Firebase", "Failed to fetch data", it)
-            onResult(null)
-        }
-        myRef.addChildEventListener(mChildEventListener)
-        myRef.keepSynced(true)
-    }
+    private val _games = MutableLiveData<List<FirebaseGame>>()
+    val games: LiveData<List<FirebaseGame>> get() = _games
 
-        private val mChildEventListener = object : ChildEventListener {
-            override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
-
-                val game = dataSnapshot.getValue(FirebaseGame::class.java)!!
-                if (game != null) {
-
-                    Log.d("Firebase", "User Namee2: ${game.gameName}, Age: ${game.gameId}")
-                } else {
-                    Log.e("Firebase", "User namee2e not found")
+    fun fetchGames() {
+        database.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val gameList = mutableListOf<FirebaseGame>()
+                for (gameSnapshot in snapshot.children) {
+                    val game = gameSnapshot.getValue(FirebaseGame::class.java)
+                    game?.let { gameList.add(it) }
                 }
-            }
-
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
+                _games.value = gameList
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Log.e("GameRepository", "Database error: ${error.message}")
             }
-        }
-
+        })
     }
+}
+

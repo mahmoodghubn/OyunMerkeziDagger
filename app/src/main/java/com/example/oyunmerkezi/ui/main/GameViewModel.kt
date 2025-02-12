@@ -1,21 +1,28 @@
 package com.example.oyunmerkezi.ui.main
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.oyunmerkezi.util.FirebaseGame
-import com.example.oyunmerkezi.util.Game
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class GameViewModel : ViewModel() {
+class GameViewModel @Inject constructor() : ViewModel() {
 
-    private val repository = GameRepository()
+    private val repository = GameRepository() // Use repository
 
-    private val _game = MutableLiveData<FirebaseGame?>()
-    val game: LiveData<FirebaseGame?> get() = _game
+    val games: LiveData<List<FirebaseGame>> get() = repository.games
 
-    fun fetchGame(gameId: String) {
-        repository.getGame(gameId) { fetchedGame ->
-            _game.value = fetchedGame
-        }
+    init {
+        repository.fetchGames() // Call repository method
     }
+
+
+
 }

@@ -47,18 +47,8 @@ class AuthActivity : DaggerAppCompatActivity() {
             println("No user is logged in.")
         }
 
-        gameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
-        gameViewModel.game.observe(this) { game ->
-            if (game != null) {
-                Log.d("Firebase", "User Namee: ${game.gameName}, Age: ${game.gameId}")
-            } else {
-                Log.e("Firebase", "User nameee not found")
-            }
-        }
 
-        // Fetch user data
-        gameViewModel.fetchGame("1")
 
     }
 
