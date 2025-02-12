@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -13,6 +12,7 @@
         <variable
             name="clickListener"
             type="com.example.oyunmerkezi.ui.main.GameListener" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -24,6 +24,7 @@
             android:id="@+id/game_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> clickListener.onClick(game)}"
             android:orientation="vertical">
 
             <TextView
@@ -44,7 +45,8 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/game_name" />
+                app:layout_constraintTop_toBottomOf="@id/game_name"
+                app:videoThumbnailImageView="@{game}" />
             <CheckBox
                 android:id="@+id/selling_check_box"
                 android:layout_width="wrap_content"
