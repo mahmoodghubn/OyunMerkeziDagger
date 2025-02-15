@@ -2,5 +2,6 @@
 
 <resources>
     /*change from android:Theme.Material.Light.NoActionBar after extending daggerAppCompatActivity*/
-    <style name="Theme.OyunMerkezi" parent="Theme.AppCompat.Light.DarkActionBar" />
+    /*change form Theme.AppCompat.Light.DarkActionBar after adding chips */
+    <style name="Theme.OyunMerkezi" parent="Theme.MaterialComponents" />
 </resources>

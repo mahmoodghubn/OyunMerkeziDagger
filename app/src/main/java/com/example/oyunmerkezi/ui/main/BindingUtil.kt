@@ -1,15 +1,12 @@
 package com.example.oyunmerkezi.ui.main
 
 
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.example.oyunmerkezi.util.FirebaseGame
-
-//import com.bumptech.glide.Glide
-//import com.example.oyunmerkezi3.database.Game
-
 
 @BindingAdapter("sellingPrice")
 fun TextView.setGamePrice(item: FirebaseGame?) {
@@ -30,6 +27,7 @@ fun TextView.setGameName(item: FirebaseGame?) {
     item?.let {
         text = item.gameName
     }
+    Log.i("hi atehre",item!!.gameName)
 }
 
 @BindingAdapter("videoThumbnailImageView")

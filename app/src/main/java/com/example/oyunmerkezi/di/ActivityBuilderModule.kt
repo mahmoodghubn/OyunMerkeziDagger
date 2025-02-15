@@ -4,6 +4,7 @@ import com.example.oyunmerkezi.AuthActivity
 import com.example.oyunmerkezi.MainActivity
 import com.example.oyunmerkezi.di.auth.AuthViewModelsModule
 import com.example.oyunmerkezi.di.auth.MainViewModelsModule
+import com.example.oyunmerkezi.di.main.MainFragmentsBuilderModule
 import com.example.oyunmerkezi.ui.auth.AuthViewModel
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -13,6 +14,6 @@ abstract class ActivityBuilderModule {
     @ContributesAndroidInjector(modules =[ AuthViewModelsModule::class])//this will create sub component behind the scene
     // sub component for organization and scooping
     abstract fun contributeAuthActivity(): AuthActivity
-    @ContributesAndroidInjector(modules =[MainViewModelsModule::class])//this will create sub component behind the scene
+    @ContributesAndroidInjector(modules =[MainViewModelsModule::class,MainFragmentsBuilderModule::class])//this will create sub component behind the scene
     abstract fun contributeMainActivity(): MainActivity
 }

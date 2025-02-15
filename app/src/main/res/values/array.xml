@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="platforms">
+        <item>@string/PS3</item>
+        <item>@string/PS4</item>
+        <item>@string/PS5</item>
+        <item>@string/XBoxOne</item>
+        <item>@string/XBoxX</item>
+    </string-array>
+</resources>

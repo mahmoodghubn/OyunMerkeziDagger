@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">OyunMerkezi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="PS3" translatable="false">PS3</string>
+    <string name="PS4" translatable="false">PS4</string>
+    <string name="PS5" translatable="false">PS5</string>
+    <string name="XBoxOne" translatable="false">XBox One</string>
+    <string name="XBoxX" translatable="false">XBox X</string>
 </resources>
