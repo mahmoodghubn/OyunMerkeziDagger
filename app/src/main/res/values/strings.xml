@@ -5,6 +5,6 @@
     <string name="PS3" translatable="false">PS3</string>
     <string name="PS4" translatable="false">PS4</string>
     <string name="PS5" translatable="false">PS5</string>
-    <string name="XBoxOne" translatable="false">XBox One</string>
-    <string name="XBoxX" translatable="false">XBox X</string>
+    <string name="XBoxOne" translatable="false">XBoxOne</string>
+    <string name="XBoxX" translatable="false">XBoxX</string>
 </resources>

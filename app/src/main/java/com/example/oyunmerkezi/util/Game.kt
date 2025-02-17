@@ -3,10 +3,13 @@ package com.example.oyunmerkezi.util
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.example.oyunmerkezi.database.DataConverter
 
 @Entity(tableName = "game_table")
+@TypeConverters(DataConverter::class) // Apply the converter here!
 data class Game(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     var gameId: Long = 0L,
 
     @ColumnInfo
@@ -104,6 +107,27 @@ data class Game(
         game.caption,
         false,
         false
+    )
+    constructor(game:FirebaseGame,favorite: Boolean,showNotification: Boolean) : this(
+        game.gameId,
+        game.gameName,
+        game.sellingPrice,
+        game.buyingPrice,
+        game.URL,
+        game.about,
+        game.age,
+        getRating(game.gameRating),
+        game.stock,
+        game.hours,
+        game.publishedDate,
+        game.online,
+        game.category,
+        game.platform,
+        game.playerNo,
+        game.language,
+        game.caption,
+        favorite,
+        showNotification
     )
 
 }
