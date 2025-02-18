@@ -1,37 +1,35 @@
 package com.example.oyunmerkezi.ui.main
 
 
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import com.example.oyunmerkezi.util.FirebaseGame
+import com.example.oyunmerkezi.util.Game
 
 @BindingAdapter("sellingPrice")
-fun TextView.setGamePrice(item: FirebaseGame?) {
+fun TextView.setGamePrice(item: Game?) {
     item?.let {
         text = item.sellingPrice.toString()
     }
 }
 
 @BindingAdapter("buyingPrice")
-fun TextView.setBuyingPrice(item: FirebaseGame?) {
+fun TextView.setBuyingPrice(item: Game?) {
     item?.let {
         text = item.buyingPrice.toString()
     }
 }
 
 @BindingAdapter("gameName")
-fun TextView.setGameName(item: FirebaseGame?) {
+fun TextView.setGameName(item: Game?) {
     item?.let {
         text = item.gameName
     }
-    Log.i("hi atehre",item!!.gameName)
 }
 
 @BindingAdapter("videoThumbnailImageView")
-fun ImageView.setThumbnail(item: FirebaseGame?) {
+fun ImageView.setThumbnail(item: Game?) {
 
     val url = "https://i4.ytimg.com/vi/${item!!.URL[0]}/mqdefault.jpg"
     item.let {

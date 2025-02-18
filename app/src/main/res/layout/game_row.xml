@@ -7,7 +7,7 @@
 
         <variable
             name="game"
-            type="com.example.oyunmerkezi.util.FirebaseGame" />
+            type="com.example.oyunmerkezi.util.Game" />
 
         <variable
             name="clickListener"

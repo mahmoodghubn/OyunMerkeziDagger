@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oyunmerkezi.R
 import com.example.oyunmerkezi.databinding.GameRowBinding
-import com.example.oyunmerkezi.util.FirebaseGame
 import com.example.oyunmerkezi.util.Game
 import java.util.Locale
 
@@ -23,7 +22,7 @@ class GameAdapter(
     private val gamesViewModel: GameViewModel,
     private val view: View
 ) :
-    ListAdapter<FirebaseGame, GameAdapter.ViewHolder>(GameDiffCallback()), Filterable {
+    ListAdapter<Game, GameAdapter.ViewHolder>(GameDiffCallback()), Filterable {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
@@ -38,7 +37,7 @@ class GameAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
             clickListener: GameListener,
-            item: FirebaseGame,
+            item: Game,
             gamesViewModel: GameViewModel,
             view: View
         ) {
@@ -60,16 +59,16 @@ class GameAdapter(
         }
     }
     class GameDiffCallback :
-        DiffUtil.ItemCallback<FirebaseGame>() {
-        override fun areItemsTheSame(oldItem: FirebaseGame, newItem: FirebaseGame): Boolean {
+        DiffUtil.ItemCallback<Game>() {
+        override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
             return oldItem.gameId == newItem.gameId
         }
 
-        override fun getChangePayload(oldItem: FirebaseGame, newItem: FirebaseGame): Any? {
+        override fun getChangePayload(oldItem: Game, newItem: Game): Any? {
             return newItem
         }
 
-        override fun areContentsTheSame(oldItem: FirebaseGame, newItem: FirebaseGame): Boolean {
+        override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
             return oldItem == newItem
         }
     }
@@ -90,7 +89,7 @@ class GameAdapter(
     }
 }
 
-class GameListener(val clickListener: (game: FirebaseGame) -> Unit) {
-    fun onClick(game: FirebaseGame) = clickListener(game)
+class GameListener(val clickListener: (game: Game) -> Unit) {
+    fun onClick(game: Game) = clickListener(game)
 }
 
